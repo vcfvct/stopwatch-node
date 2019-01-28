@@ -28,7 +28,7 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
   await sleep(500);
   sw.stop();
 
-  sw.start('Task 3');
+  sw.start('Task 4');
   await sleep(300);
   sw.stop();
 
@@ -43,11 +43,11 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 #### Output
 ```
 ------------------------------------------
-ms 		      % 		       Task name
+ms 		 % 		 Task name
 ------------------------------------------
-1000 		    30.21 		   Task 1
-1504 		    45.44 		   Task 2
-505 		    15.26 		   Task 3
-301 		    9.09 		     Task 3
+1000 		 30.21 		 Task 1
+1504 		 45.44 		 Task 2
+505 		 15.26 		 Task 3
+301 		 9.09 		 Task 4
 ```
 

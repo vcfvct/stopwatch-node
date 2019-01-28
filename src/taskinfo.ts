@@ -1,5 +1,5 @@
 /**
-* Inner class to hold data about one task executed within the stop watch.
+* class to hold data about one task executed within the stop watch.
 */
 export class TaskInfo {
   private _taskName: string;
