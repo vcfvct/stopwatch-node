@@ -1,7 +1,7 @@
 ![Stopwatch](https://cdn.iconscout.com/icon/premium/png-256-thumb/stopwatch-13-111965.png)
 
-## A simple stopwatch with 0 dependency.
-This is inspired by the [Spring-Stopwatch](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/util/StopWatch.html). `100%` Test Coverage.
+## A simple JS/TS Stopwatch with 0 dependency.
+This is inspired by the [Spring-Stopwatch](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/util/StopWatch.html). Written in `Typescript`, 100%` Test Coverage.
 
 ### Install
 > npm install stopwatch-node
@@ -13,7 +13,7 @@ import { StopWatch } from 'stopwatch-node';
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 (async () => {
-  const sw: StopWatch = new StopWatch('sw');
+  const sw = new StopWatch('sw');
   sw.start('Task 1');
   await sleep(1000);
   sw.stop();

@@ -1,7 +1,7 @@
 module.exports = {
   moduleFileExtensions: ["ts", "js", "json"],
   transform: {
-    "^.+\\.(ts|tsx)$": "ts-jest"
+    "^.+\\.(ts)$": "ts-jest"
   },
   globals: {
     "ts-jest": {
