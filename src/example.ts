@@ -18,7 +18,7 @@ const sleep: Function = (ms?: number) => new Promise(resolve => setTimeout(resol
   await sleep(500);
   sw.stop();
 
-  sw.start('Task 3');
+  sw.start('Task 4');
   await sleep(300);
   sw.stop();
 
