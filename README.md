@@ -40,4 +40,14 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 ```
 
+#### Output
+```
+------------------------------------------
+ms 		      % 		       Task name
+------------------------------------------
+1000 		    30.21 		   Task 1
+1504 		    45.44 		   Task 2
+505 		    15.26 		   Task 3
+301 		    9.09 		     Task 3
+```
 
