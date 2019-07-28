@@ -1,6 +1,6 @@
 {
   "name": "stopwatch-node",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "stopwatch for nodejs inspired by Spring Stopwatch",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -14,7 +14,11 @@
   },
   "keywords": [
     "stopwatch",
-    "nodejs"
+    "nodejs",
+    "typescript",
+    "javascript",
+    "time",
+    "timer"
   ],
   "author": "Han Li",
   "license": "MIT",
