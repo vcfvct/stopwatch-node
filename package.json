@@ -1,6 +1,6 @@
 {
   "name": "stopwatch-node",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "stopwatch for nodejs inspired by Spring Stopwatch",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -10,6 +10,7 @@
   },
   "scripts": {
     "build": "tsc -d -p .",
+    "lint": "eslint --ext .ts src/",
     "test": "jest"
   },
   "keywords": [
@@ -25,6 +26,9 @@
   "devDependencies": {
     "@types/jest": "^23.3.13",
     "@types/node": "^10.12.18",
+    "@typescript-eslint/eslint-plugin": "^2.6.0",
+    "@typescript-eslint/parser": "^2.6.0",
+    "eslint": "^6.6.0",
     "jest": "^23.6.0",
     "ts-jest": "^23.10.5",
     "ts-node": "^7.0.1",
