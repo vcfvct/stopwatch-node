@@ -1,24 +1,23 @@
 import { TaskInfo } from './taskinfo';
-import { puts } from 'util';
 
 export class StopWatch {
   public static NoTaskMessage = 'No task info kept';
 
   private id: string;
   private currentTaskName: string | null = null;
-  private startTimeMillis: number = 0;
-  private totalTimeMillis: number = 0;
+  private startTimeMillis = 0;
+  private totalTimeMillis = 0;
   private taskList: Array<TaskInfo> = [];
 
-  constructor(id: string = '') {
+  constructor(id = '') {
     this.id = id;
   }
 
   /**
    * start a task
    */
-  start(taskName: string = '') {
-    this.currentTaskName !== null && this.throwError("Can't start StopWatch: it's already running");
+  start(taskName = ''): void {
+    this.currentTaskName !== null && this.throwError('Can\'t start StopWatch: it\'s already running');
     this.currentTaskName = taskName;
     this.startTimeMillis = Date.now();
   }
@@ -26,8 +25,8 @@ export class StopWatch {
   /**
    * stop the current task
    */
-  stop() {
-    this.currentTaskName === null && this.throwError("Can't stop StopWatch: it's not running");
+  stop(): void {
+    this.currentTaskName === null && this.throwError('Can\'t stop StopWatch: it\'s not running');
     const lastTime: number = Date.now() - this.startTimeMillis;
     this.totalTimeMillis += lastTime;
     const lastTaskInfo = new TaskInfo(this.currentTaskName!, lastTime);
@@ -82,7 +81,7 @@ export class StopWatch {
     return this.taskList.length;
   }
 
-  private throwError(msg: string) {
+  private throwError(msg: string): never {
     throw new Error(msg);
   }
 }
