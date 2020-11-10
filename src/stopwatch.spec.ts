@@ -35,7 +35,7 @@ describe('StopWatch Test', () => {
     expect(rawTotal).toBeLessThanOrEqual(taskTimersTotal + (taskTimersTotal / 20));
     const noTask = sw.getTask('No task');
     expect(noTask).toBeUndefined();
-    const taskOne = sw.getTask('Test Task 1');
+    const taskOne = sw.getTask(firstTaskName);
     expect(taskOne).toBeInstanceOf(TaskInfo);
     expect(taskOne?.percentage).toBeTruthy;
   });
