@@ -1,4 +1,5 @@
 import { StopWatch } from './stopwatch';
+import { TaskInfo } from './taskinfo';
 
 describe('StopWatch Test', () => {
   let sw: StopWatch;
@@ -12,21 +13,31 @@ describe('StopWatch Test', () => {
   test('should add task and log correctly', async () => {
     expect(sw.prettyPrint()).toContain(StopWatch.NoTaskMessage);
     expect(sw.isRunning()).toBeFalsy();
+    const taskTimers = [30, 20];
+    const taskTimersTotal = taskTimers.reduce((a, b) => a + b, 0);
     const firstTaskName = 'Test Task 1';
     sw.start(firstTaskName);
-    await sleep(30);
+    await sleep(taskTimers[0]);
     expect(sw.isRunning()).toBeTruthy();
     sw.stop();
     expect(sw.isRunning()).toBeFalsy();
     const secondTaskName = 'Test Task 2';
     sw.start(secondTaskName);
-    await sleep(20);
+    await sleep(taskTimers[1]);
     sw.stop();
     expect(sw.getTaskCount()).toBe(2);
     const prettyPrint = sw.prettyPrint();
     expect(prettyPrint).not.toBeNull();
     expect(prettyPrint).toContain(firstTaskName);
     expect(prettyPrint).toContain(secondTaskName);
+    const rawTotal = sw.getTotalTime();
+    expect(rawTotal).toBeGreaterThanOrEqual(taskTimersTotal);
+    expect(rawTotal).toBeLessThanOrEqual(taskTimersTotal + (taskTimersTotal / 20));
+    const noTask = sw.getTask('No task');
+    expect(noTask).toBeUndefined();
+    const taskOne = sw.getTask('Test Task 1');
+    expect(taskOne).toBeInstanceOf(TaskInfo);
+    expect(taskOne?.percentage).toBeTruthy;
   });
 
   test('should throw error calling start when some task already started', () => {
