@@ -3,7 +3,7 @@
 */
 export class TaskInfo {
   private _taskName: string;
-
+  private _percentage: string | undefined;
   private _timeMillis: number;
 
   constructor(taskName: string, timeMillis: number) {
@@ -18,4 +18,15 @@ export class TaskInfo {
   get timeMills(): number {
     return this._timeMillis;
   }
+
+  get percentage(): string | undefined {
+    return this._percentage;
+  }
+
+  calculatePercentage(totalTimeMillis: number): string {
+    this._percentage = (this._timeMillis * 100 / totalTimeMillis).toFixed(2);
+    return this._percentage;
+  }
+
+
 }
