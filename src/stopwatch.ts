@@ -70,6 +70,13 @@ export class StopWatch {
   }
 
   /**
+   * Return the total running time in milliseconds
+   */
+  getTotalTime(): number {
+    return this.totalTimeMillis;
+  }
+
+  /**
    * Return a short description of the total running time.
    */
   shortSummary(): string {
