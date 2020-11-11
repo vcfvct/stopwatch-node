@@ -46,7 +46,7 @@ export class StopWatch {
       this.taskList.forEach((task: TaskInfo) => {
         let percentage = '0';
         try {
-          percentage = (task.timeMills * 100 / this.totalTimeMillis).toFixed(2);
+          percentage = task.calculatePercentage(this.totalTimeMillis);
         } catch (e) {
         }
         output.push(`${task.timeMills} \t\t ${percentage} \t\t ${task.taskName}`);
@@ -58,6 +58,22 @@ export class StopWatch {
 
     console.info(outputString);
     return outputString;
+  }
+
+  /**
+   * Return a task matching the given name
+   */
+  getTask(taskName: string): TaskInfo | undefined {
+    const task = this.taskList.find(task => task.taskName === taskName);
+    task?.calculatePercentage(this.totalTimeMillis);
+    return task;
+  }
+
+  /**
+   * Return the total running time in milliseconds
+   */
+  getTotalTime(): number {
+    return this.totalTimeMillis;
   }
 
   /**
