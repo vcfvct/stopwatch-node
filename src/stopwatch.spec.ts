@@ -15,26 +15,30 @@ describe('StopWatch Test', () => {
     expect(sw.isRunning()).toBeFalsy();
     const taskTimers = [30, 20];
     const taskTimersTotal = taskTimers.reduce((a, b) => a + b, 0);
+
     const firstTaskName = 'Test Task 1';
     sw.start(firstTaskName);
     await sleep(taskTimers[0]);
     expect(sw.isRunning()).toBeTruthy();
     sw.stop();
     expect(sw.isRunning()).toBeFalsy();
+
     const secondTaskName = 'Test Task 2';
     sw.start(secondTaskName);
     await sleep(taskTimers[1]);
     sw.stop();
     expect(sw.getTaskCount()).toBe(2);
+
     const prettyPrint = sw.prettyPrint();
     expect(prettyPrint).not.toBeNull();
     expect(prettyPrint).toContain(firstTaskName);
     expect(prettyPrint).toContain(secondTaskName);
     const rawTotal = sw.getTotalTime();
     expect(rawTotal).toBeGreaterThanOrEqual(taskTimersTotal);
-    expect(rawTotal).toBeLessThanOrEqual(taskTimersTotal + (taskTimersTotal / 20));
+
     const noTask = sw.getTask('No task');
     expect(noTask).toBeUndefined();
+
     const taskOne = sw.getTask(firstTaskName);
     expect(taskOne).toBeInstanceOf(TaskInfo);
     expect(taskOne?.percentage).toBeTruthy;

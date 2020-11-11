@@ -10,7 +10,8 @@ const sleep: Function = (ms?: number) => new Promise(resolve => setTimeout(resol
   // whether the stop watch is currently running
   console.info(sw.isRunning());
 
-  sw.start('Task 2');
+  const task2Name = 'Task 2';
+  sw.start(task2Name);
   await sleep(1500);
   sw.stop();
 
@@ -26,4 +27,7 @@ const sleep: Function = (ms?: number) => new Promise(resolve => setTimeout(resol
   console.info(`Task Count: ${sw.getTaskCount()}`);
   // a table describing all tasks performed
   sw.prettyPrint();
+
+  const task2 = sw.getTask(task2Name);
+  console.info(`'${task2Name}' took ${task2?.timeMills} and percentage is ${task2?.percentage}`);
 })();
