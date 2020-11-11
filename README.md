@@ -17,10 +17,11 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
   sw.start('Task 1');
   await sleep(1000);
   sw.stop();
-  // whether the stopwatch is currently running
+  // whether the stop watch is currently running
   console.info(sw.isRunning());
 
-  sw.start('Task 2');
+  const task2Name = 'Task 2';
+  sw.start(task2Name);
   await sleep(1500);
   sw.stop();
 
@@ -36,8 +37,10 @@ const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
   console.info(`Task Count: ${sw.getTaskCount()}`);
   // a table describing all tasks performed
   sw.prettyPrint();
-})();
 
+  const task2 = sw.getTask(task2Name);
+  console.info(`'${task2Name}' took ${task2?.timeMills} and percentage is ${task2?.percentage}`);
+})();
 ```
 
 #### Output
@@ -49,5 +52,8 @@ ms 		 % 		 Task name
 1504 		 45.44 		 Task 2
 505 		 15.26 		 Task 3
 301 		 9.09 		 Task 4
+
+
+'Task 2' took 1506 and percentage is 45.47
 ```
 
